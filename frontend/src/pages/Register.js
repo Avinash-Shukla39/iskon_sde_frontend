@@ -2,8 +2,9 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import axios from "axios";
+import axios from "../api/axiosInstance";
 import "../App.css";
+import { registerUser } from "../api/auth"; // Update the import
 
 const Register = () => {
     const { login } = useContext(AuthContext);
@@ -31,12 +32,12 @@ const Register = () => {
         }
 
         try {
-            const res = await axios.post("/auth/register", formData);
-            login(res.data.user, res.data.token);
-            navigate("/");
-        } catch (err) {
-            setError(err.response?.data?.message || "Registration failed.");
-        }
+    const res = await registerUser(formData); // Use this instead of axios.post
+    login(res.data.user, res.data.token);
+    navigate("/");
+  } catch (err) {
+    setError(err.response?.data?.message || "Registration failed.");
+  }
     };
 
     return (

@@ -24,6 +24,7 @@ const App = () => {
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Navigate to="/" />} /> 
                     <Route path="/event/:id" element={<EventDetails />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

@@ -1,3 +1,4 @@
+// src/api/authAPI.js
 import axios from "./axiosInstance";
 
 export const loginUser = (credentials) => axios.post("/auth/login", credentials);
